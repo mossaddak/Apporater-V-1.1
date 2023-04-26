@@ -13,7 +13,7 @@ post => http://127.0.0.1:8000/api/account/login/
 # Profile
 get, patch => http://127.0.0.1:8000/api/account/profile/
 =) passing data fields: username, password, first_name, last_name, email, profile_picture
-note: Here username field is mendetory
+note: Here username field is mandetory
 
 # Contact Form
 post = > http://127.0.0.1:8000/api/app/contact/
