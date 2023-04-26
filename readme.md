@@ -13,7 +13,7 @@ post => http://127.0.0.1:8000/api/account/login/
 # Profile
 get, patch => http://127.0.0.1:8000/api/account/profile/
 =) passing data fields: username, password, first_name, last_name, email, profile_picture
-note: For patching no need to pass anything, authenticated users can change their information through the field just need to hit the link with the field information wants to change.
+note: Here username field is mendetory
 
 # Contact Form
 post = > http://127.0.0.1:8000/api/app/contact/
