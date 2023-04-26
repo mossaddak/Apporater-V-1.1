@@ -481,10 +481,16 @@ class AppkeywordScreenshotView(APIView):
     def get(self, request):
         all_data = appkeyword_screenshot.objects.all()
         serializer = appkeyword_screenshotSerializer(all_data, many=True)
+        today = timezone.now().date()
+        five_days_ago = today - timedelta(days=5)
+        
+        last_five_days_data = appkeyword_screenshot.objects.filter(created_at__gte=five_days_ago + timedelta(days=1)).annotate(day=TruncDate('created_at')).values('day').annotate(total_reviews=Count('id'))
+        
 
         return Response(
             {
-                'data': serializer.data,
+                'overall_reviews':all_data.count(),
+                'last_five_days_review':last_five_days_data,
                 'message': "Data fetch"
             },
             status=status.HTTP_302_FOUND
@@ -518,10 +524,8 @@ class CampaignReviewView(APIView):
         
         return Response(
             {
-                #'data': serializer.data,
                 'overall_reviews':all_data.count(),
                 'last_five_days_review':last_five_days_data,
-                
                 'message': "Data fetch"
             },
             status=status.HTTP_302_FOUND 

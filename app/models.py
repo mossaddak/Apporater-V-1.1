@@ -62,7 +62,7 @@ class app_screenshot(models.Model):
         return f"{self.pk}.{self.title}"
 
 class appkeyword_screenshot(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True)
     appkeyword_id = models.TextField(blank=True, null=True)  #foreign key to id of appkeyord
     market = models.TextField(blank=True, null=True) #which country
     ranking = models.TextField(blank=True, null=True) #keyword ranking of the app in the market 
