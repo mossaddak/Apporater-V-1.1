@@ -56,8 +56,6 @@ class AdminAccessOnlyOtherCanSee(BasePermission):
             return True
         return False
 
-
-
 # contact start ======================================================>
 class ContactFromView(APIView):
     permission_classes = [IsAuthenticated]
@@ -107,85 +105,11 @@ class ContactFromView(APIView):
                     },
                     status=status.HTTP_403_FORBIDDEN
                 )
-
-
-# class ContactFromDetailsView(APIView):
-#     permission_classes = [IsAuthenticated]
-#     authentication_classes = [JWTAuthentication]
-
-#     def get(self, request, pk):
-
-#         if request.user.is_authenticated and request.user.is_superuser:
-#             contact = contactform.objects.get(pk=pk)
-#             serializer = contactformSerializer(contact)
-#             return Response(
-#                     {
-#                         'data': serializer.data,
-#                         'message': "Data fetch"
-#                     },
-#                     status=status.HTTP_200_OK
-#                 )
-#         else:
-#             return Response(
-#                     {
-#                         'message': "You don't have permission"
-#                     },
-#                     status=status.HTTP_403_FORBIDDEN
-#                 )
-        
-    
-#     def delete(self, request, pk):
-
-#         if request.user.is_authenticated and request.user.is_superuser:
-#             contact = contactform.objects.get(pk=pk).delete()
-#             return Response(
-#                     {
-#                         'message': "Item successfully deleted"
-#                     },
-#                     status=status.HTTP_200_OK
-#                 )
-#         else:
-#             return Response(
-#                     {
-#                         'message': "You don't have permission"
-#                     },
-#                     status=status.HTTP_403_FORBIDDEN
-#                 )
-
 #contact end ==================!        
-
-
 
 # Visitlog start ======================================================>
 class VisitlogView(APIView):
-    # permission_classes = [IsAuthenticated]
-    # authentication_classes = [JWTAuthentication]
-    # def post(self, request):
-    #     serializer = visitlogSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(
-    #             {
-    #                 'data': serializer.data,
-    #                 'message': "Data smubmitted"
-    #             },
-    #             status=status.HTTP_201_CREATED
-    #         )
-    #     else:
-    #         errors = serializer.errors
-    #         error_list = []
-    #         for field, error in errors.items():
-    #             error_list.append(f"{field.capitalize()}: {error[0]}")
-    #         message = "\n".join(error_list)
-    #         return Response(
-    #             {
-    #                 'data': errors,
-    #                 'message': f"The following errors occurred:\n{message}"
-    #             },
-    #             status=status.HTTP_400_BAD_REQUEST
-    #         )
-        
-    
+
     def get(self, request):
         visiting_blogs = visitlog.objects.all()
         serializer = visitlogSerializer(visiting_blogs, many=True)
@@ -197,96 +121,10 @@ class VisitlogView(APIView):
                 },
                 status=status.HTTP_302_FOUND
             )
-            
-    
-# class VisitlogDetailsView(APIView):
-#     permission_classes = [IsAuthenticated]
-#     authentication_classes = [JWTAuthentication]
-#     def get(self, request, pk):
-#         if request.user.is_authenticated:
-#             if request.user.is_superuser:
-#                 visiting_blog = visitlog.objects.get(pk=pk)
-#                 serializer = visitlogSerializer(visiting_blog)
-#                 return Response(
-#                         {
-#                             'data': serializer.data,
-#                             'message': "Data fetch"
-#                         },
-#                         status=status.HTTP_302_FOUND
-#                     )
-
-#             else:
-#                 return Response(
-#                 {
-#                     'message': "You Don't have permission for this"
-#                 },status=status.HTTP_403_FORBIDDEN
-#         )
-
-#         else:
-#             return Response(
-#                 {
-#                     'message': "Please log into your account"
-#                 },status=status.HTTP_403_FORBIDDEN
-#             )
-        
-#     def delete(self, request, pk):
-#         if request.user.is_authenticated:
-#             if request.user.is_superuser:
-#                 visitlog.objects.get(pk=pk).delete()
-#                 return Response(
-#                         {
-#                             'message': "Item Deleted"
-#                         },
-#                         status=status.HTTP_200_OK
-#                     )
-
-#             else:
-#                 return Response(
-#                 {
-#                     'message': "You Don't have permission for this"
-#                 },status=status.HTTP_403_FORBIDDEN
-#         )
-
-#         else:
-#             return Response(
-#                 {
-#                     'message': "Please log into your account"
-#                 },status=status.HTTP_403_FORBIDDEN
-#             )
-
-
 #contact end ==================!
-
 
 #Appkeyword start ======================================================>
 class AppkeywordView(APIView):
-    # permission_classes = [IsAuthenticated]
-    # authentication_classes = [JWTAuthentication]
-    # def post(self, request):
-    #     serializer = appkeywordSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(
-    #             {
-    #                 'data': serializer.data,
-    #                 'message': "Data smubmitted"
-    #             },
-    #             status=status.HTTP_201_CREATED
-    #         )
-    #     else:
-    #         errors = serializer.errors
-    #         error_list = []
-    #         for field, error in errors.items():
-    #             error_list.append(f"{field.capitalize()}: {error[0]}")
-    #         message = "\n".join(error_list)
-    #         return Response(
-    #             {
-    #                 'data': errors,
-    #                 'message': f"The following errors occurred:\n{message}"
-    #             },
-    #             status=status.HTTP_400_BAD_REQUEST
-    #         )
-        
     
     def get(self, request):
         
@@ -300,95 +138,10 @@ class AppkeywordView(APIView):
             },
             status=status.HTTP_302_FOUND
         )
-        
-    
-# class AppkeywordDetailsView(APIView):
-#     permission_classes = [IsAuthenticated]
-#     authentication_classes = [JWTAuthentication]
-#     def get(self, request, pk):
-#         if request.user.is_authenticated:
-#             if request.user.is_superuser:
-#                 visiting_blog = appkeyword.objects.get(pk=pk)
-#                 serializer = appkeywordSerializer(visiting_blog)
-#                 return Response(
-#                         {
-#                             'data': serializer.data,
-#                             'message': "Data fetch"
-#                         },
-#                         status=status.HTTP_302_FOUND
-#                     )
-
-#             else:
-#                 return Response(
-#                 {
-#                     'message': "You Don't have permission for this"
-#                 },status=status.HTTP_403_FORBIDDEN
-#         )
-
-#         else:
-#             return Response(
-#                 {
-#                     'message': "Please log into your account"
-#                 },status=status.HTTP_403_FORBIDDEN
-#             )
-        
-#     def delete(self, request, pk):
-#         if request.user.is_authenticated:
-#             if request.user.is_superuser:
-#                 appkeyword.objects.get(pk=pk).delete()
-#                 return Response(
-#                         {
-#                             'message': "Item Deleted"
-#                         },
-#                         status=status.HTTP_200_OK
-#                     )
-
-#             else:
-#                 return Response(
-#                 {
-#                     'message': "You Don't have permission for this"
-#                 },status=status.HTTP_403_FORBIDDEN
-#         )
-
-#         else:
-#             return Response(
-#                 {
-#                     'message': "Please log into your account"
-#                 },status=status.HTTP_403_FORBIDDEN
-#             )
-
 #Appkeyword end ==================!
-
 
 #app start ======================================================>
 class AppView(APIView):
-    # permission_classes = [IsAuthenticated]
-    # authentication_classes = [JWTAuthentication]
-    # def post(self, request):
-    #     serializer = appSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(
-    #             {
-    #                 'data': serializer.data,
-    #                 'message': "Data smubmitted"
-    #             },
-    #             status=status.HTTP_201_CREATED
-    #         )
-    #     else:
-    #         errors = serializer.errors
-    #         error_list = []
-    #         for field, error in errors.items():
-    #             error_list.append(f"{field.capitalize()}: {error[0]}")
-    #         message = "\n".join(error_list)
-    #         return Response(
-    #             {
-    #                 'data': errors,
-    #                 'message': f"The following errors occurred:\n{message}"
-    #             },
-    #             status=status.HTTP_400_BAD_REQUEST
-    #         )
-        
     
     def get(self, request):
         visiting_blogs = app.objects.all()
@@ -401,64 +154,7 @@ class AppView(APIView):
             },
             status=status.HTTP_302_FOUND
         )
-            
-# class AppDetailsView(APIView):
-#     permission_classes = [IsAuthenticated]
-#     authentication_classes = [JWTAuthentication]
-#     def get(self, request, pk):
-#         if request.user.is_authenticated:
-#             if request.user.is_superuser:
-#                 visiting_blog = app.objects.get(pk=pk)
-#                 serializer = appSerializer(visiting_blog)
-#                 return Response(
-#                         {
-#                             'data': serializer.data,
-#                             'message': "Data fetch"
-#                         },
-#                         status=status.HTTP_302_FOUND
-#                     )
-
-#             else:
-#                 return Response(
-#                 {
-#                     'message': "You Don't have permission for this"
-#                 },status=status.HTTP_403_FORBIDDEN
-#         )
-
-#         else:
-#             return Response(
-#                 {
-#                     'message': "Please log into your account"
-#                 },status=status.HTTP_403_FORBIDDEN
-#             )
-        
-#     def delete(self, request, pk):
-#         if request.user.is_authenticated:
-#             if request.user.is_superuser:
-#                 app.objects.get(pk=pk).delete()
-#                 return Response(
-#                         {
-#                             'message': "Item Deleted"
-#                         },
-#                         status=status.HTTP_200_OK
-#                     )
-
-#             else:
-#                 return Response(
-#                 {
-#                     'message': "You Don't have permission for this"
-#                 },status=status.HTTP_403_FORBIDDEN
-#         )
-
-#         else:
-#             return Response(
-#                 {
-#                     'message': "Please log into your account"
-#                 },status=status.HTTP_403_FORBIDDEN
-#             )
-
 #app end ==================!
-
 
 #app_screenshot start ======================================================>
 class AppScreenshotView(APIView):
@@ -476,17 +172,14 @@ class AppScreenshotView(APIView):
             
 #app_screenshot end ==================!
 
-
 class AppkeywordScreenshotView(APIView):
     def get(self, request):
         all_data = appkeyword_screenshot.objects.all()
         serializer = appkeyword_screenshotSerializer(all_data, many=True)
         today = timezone.now().date()
         five_days_ago = today - timedelta(days=5)
-        
         last_five_days_data = appkeyword_screenshot.objects.filter(created_at__gte=five_days_ago + timedelta(days=1)).annotate(day=TruncDate('created_at')).values('day').annotate(total_reviews=Count('id'))
-        
-
+ 
         return Response(
             {
                 'overall_reviews':all_data.count(),
@@ -495,7 +188,6 @@ class AppkeywordScreenshotView(APIView):
             },
             status=status.HTTP_302_FOUND
         )
-    
 
 class CampaignView(APIView):
     def get(self, request):
