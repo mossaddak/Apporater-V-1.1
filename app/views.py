@@ -40,6 +40,12 @@ from rest_framework.permissions import (
     IsAuthenticated,
 )
 
+from django.db.models.functions import TruncDate
+from datetime import timedelta
+from django.utils import timezone
+from django.db.models import Count
+
+
 #permissions============================>
 class AdminAccessOnlyOtherCanSee(BasePermission):
     def has_permission(self, request, view):
@@ -504,14 +510,23 @@ class CampaignReviewView(APIView):
         all_data = campaign_review.objects.all()
         serializer = campaign_reviewSerializer(all_data, many=True)
 
+        today = timezone.now().date()
+        five_days_ago = today - timedelta(days=5)
+        
+        last_five_days_data = campaign_review.objects.filter(created_at__gte=five_days_ago + timedelta(days=1)).annotate(day=TruncDate('created_at')).values('day').annotate(total_reviews=Count('id'))
+        
+        
         return Response(
             {
-                'data': serializer.data,
+                #'data': serializer.data,
+                'overall_reviews':all_data.count(),
+                'last_five_days_review':last_five_days_data,
+                
                 'message': "Data fetch"
             },
-            status=status.HTTP_302_FOUND
+            status=status.HTTP_302_FOUND 
         )
-    
+     
 
 class DeviceView(APIView):
     def get(self, request):

@@ -80,9 +80,9 @@ class campaign(models.Model):
     reviews_count = models.TextField(blank=True, null=True)
     def __str__(self):
         return f"{self.pk}.{self.form_id}"
-
+ 
 class campaign_review(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(null=True)
     campaign_id  = models.TextField(blank=True, null=True)  
     review_text  = models.TextField(blank=True, null=True)  
     given_by_user_id  = models.TextField(blank=True, null=True)  
