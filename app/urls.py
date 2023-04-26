@@ -3,12 +3,8 @@ from django.urls import path, include
 from .views import(
     ContactFromView,
     VisitlogView,
-    #ContactFromDetailsView,
-    #VisitlogDetailsView,
     AppkeywordView,
-    #AppkeywordDetailsView,
     AppView,
-    #AppDetailsView,
     AppScreenshotView,
     AppkeywordScreenshotView,
     CampaignView,

@@ -13,7 +13,6 @@ from .serializer import(
     devicesSerializer,
     reviewer_accountSerializer
 )
-
 from .models import(
     contactform,
     visitlog,
@@ -32,14 +31,12 @@ from rest_framework.permissions import (
 from rest_framework_simplejwt.authentication import (
     JWTAuthentication
 )
-
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import (
     BasePermission,
     IsAuthenticatedOrReadOnly,
     IsAuthenticated,
 )
-
 from django.db.models.functions import TruncDate
 from datetime import timedelta
 from django.utils import timezone
@@ -169,7 +166,6 @@ class AppScreenshotView(APIView):
             },
             status=status.HTTP_302_FOUND
         )
-            
 #app_screenshot end ==================!
 
 class AppkeywordScreenshotView(APIView):
@@ -202,7 +198,6 @@ class CampaignView(APIView):
             status=status.HTTP_302_FOUND
         )
     
-
 class CampaignReviewView(APIView):
     def get(self, request):
         all_data = campaign_review.objects.all()
@@ -223,7 +218,6 @@ class CampaignReviewView(APIView):
             status=status.HTTP_302_FOUND 
         )
      
-
 class DeviceView(APIView):
     def get(self, request):
         all_data = devices.objects.all()
