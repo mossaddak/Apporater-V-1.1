@@ -153,19 +153,20 @@ AUTH_USER_MODEL = 'user_profile.User'
 
 #password reset purpose
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'#oke
-EMAIL_HOST = 'smtp.gmail.com'#oke
+#EMAIL_HOST = 'smtp.gmail.com'#oke
+EMAIL_HOST = 'mail.rvk.in'
 
-EMAIL_PORT = '587'#oke
+EMAIL_PORT = '465'#oke
 EMAIL_HOST_USER = 'donotreply@rvk.in'#leave here your genuine email
 EMAIL_HOST_PASSWORD = 'Tpy@475631'#leave here your genuine password of your email. keep it in mind, as the password should in encrypted condition 
-EMAIL_USE_TLS = True#oke
+EMAIL_USE_SSL = True#oke
 
 
 TIME_ZONE = 'Asia/Dhaka'
 
 
 CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [
+# CORS_ORIGIN_WHITELIST  = [
 #     "https://example.com",
 #     "https://sub.example.com",
 #     "http://localhost:3000",
