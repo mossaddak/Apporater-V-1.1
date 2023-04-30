@@ -1,5 +1,7 @@
 # <a href="https://apporaterapiv11devbymossaddak.pythonanywhere.com/">Live Link
 
+Note: you have to add endpoint here
+
 # Sing Up
 
 post => http://127.0.0.1:8000/api/account/sing-up/
