@@ -50,7 +50,7 @@ class app_screenshot(models.Model):
     installs = models.TextField(blank=True, null=True)
     minInstalls = models.TextField(blank=True, null=True)
     reviews = models.TextField(blank=True, null=True)
-    ratings = models.TextField(blank=True, null=True)
+    ratings = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     score = models.TextField(blank=True, null=True)
     shortdescription = models.TextField(blank=True, null=True)

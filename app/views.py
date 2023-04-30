@@ -41,6 +41,7 @@ from django.db.models.functions import TruncDate
 from datetime import timedelta
 from django.utils import timezone
 from django.db.models import Count
+from django.db.models import Avg
 
 
 #permissions============================>
@@ -158,15 +159,19 @@ class AppScreenshotView(APIView):
     def get(self, request):
         all_data = app_screenshot.objects.all()
         serializer = app_screenshotSerializer(all_data, many=True)
+        average_rating = all_data.aggregate(Avg('ratings'))
+
 
         return Response(
             {
                 'data': serializer.data,
+                'average_rating': average_rating['ratings__avg'],
                 'message': "Data fetch"
             },
             status=status.HTTP_302_FOUND
         )
 #app_screenshot end ==================!
+
 
 class AppkeywordScreenshotView(APIView):
     def get(self, request):

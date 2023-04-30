@@ -57,6 +57,8 @@ get = > http://127.0.0.1:8000/api/app/app/
 
 get = > http://127.0.0.1:8000/api/app/app-screenshot/
 
+    Note: you also wiil ge the average rating from here.
+
 # Appkeyword Screenshot
 
 get = > http://127.0.0.1:8000/api/app/appkeyword-screenshot/
