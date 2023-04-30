@@ -39,11 +39,13 @@ class SingUp(APIView):
                 )
             if serializer.is_valid():
                 serializer.save()
+                user = User.objects.all().last()
+                refresh = RefreshToken.for_user(user)
                 return Response(
                     { 
-                        'message':"Your account is created, to verify check your mail. An email is sent.",
+                        'message':"Your account is created.",
                         'data':serializer.data,
-                        'mail':send_otp_via_email(serializer.data['email']),
+                        'access_token':str(refresh.access_token)
                     },status = status.HTTP_201_CREATED
                 )
         

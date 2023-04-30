@@ -1,14 +1,29 @@
 # Sing Up
-post => http://127.0.0.1:8000/api/account/sing-up/
-=) passing data fields: email, profile_picture, username, password, first_name, last_name
 
-# Account Verification
-post => http://127.0.0.1:8000/api/account/verify/
-=) passing data fields: otp
+post => http://127.0.0.1:8000/api/account/sing-up/
+
+=) passing data fields: 
+
+{
+    "username": "mossadak",
+    "first_name": "mossaddak",
+    "last_name": "sium",
+    "email": "10000mossaddak@gmail.com"
+}
+
 
 # Login
+
 post => http://127.0.0.1:8000/api/account/login/
-=) passing data fields: username, password
+
+=) passing data fields:
+
+
+{
+    "username":"mossadak",
+    "password":"1234"
+}
+
 
 # Profile
 get, patch => http://127.0.0.1:8000/api/account/profile/

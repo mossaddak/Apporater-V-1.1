@@ -15,7 +15,6 @@ class UserSerializer(ModelSerializer):
             "first_name",
             "last_name",
             "email",
-            "profile_picture",
             "password",
             "is_superuser"
         )
@@ -40,9 +39,6 @@ class UserSerializer(ModelSerializer):
             last_name=validate_data["last_name"],
             password=validate_data["password"],
             email=validate_data["email"],
-            profile_picture=validate_data["profile_picture"],
-            
-            
         )
         print("End User======================", user)
         #user.set_password(validate_data["password"])
@@ -68,11 +64,7 @@ class LoginSerializer(serializers.Serializer):
              raise serializers.ValidationError("Account not found")
         user = User.objects.filter(username=username)
         user = user[0]
-        user.is_verified
-
-        if user.is_verified == False:
-            raise serializers.ValidationError("Account is not verified")
-        print("NEwemial=================================", user.is_verified)
+        
         return data
     
     
