@@ -48,9 +48,6 @@ class UserSerializer(ModelSerializer):
         return validate_data
     
 
-class VeriFyAccountSerializer(serializers.Serializer):
-    otp = serializers.CharField()
-
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()

@@ -11,6 +11,9 @@ post => http://127.0.0.1:8000/api/account/sing-up/
         "email": "10000mossaddak@gmail.com"
     }
 
+# Total User
+
+get => http://127.0.0.1:8000/api/account/total_user/
 
 # Login
 
