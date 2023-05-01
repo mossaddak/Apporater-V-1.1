@@ -12,7 +12,7 @@ post => http://127.0.0.1:8000/api/account/sing-up/
         "username": "mossadak",
         "first_name": "mossaddak",
         "last_name": "sium",
-        "email": "10000mossaddak@gmail.com"
+        "email": "mossaddak@gmail.com"
     }
 
 # Total User
