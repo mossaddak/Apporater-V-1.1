@@ -42,8 +42,14 @@ class SingUp(APIView):
                 return Response(
                     { 
                         'message':"Your account is created.",
-                        'data':serializer.data,
-                        'access_token':str(refresh.access_token)
+                        'data':{
+                            'token':{
+                                'refresh': str(refresh),
+                                'access': str(refresh.access_token),
+                                "is_superuser":user.is_superuser,
+                            }
+
+                        }
                     },status = status.HTTP_201_CREATED
                 )
         

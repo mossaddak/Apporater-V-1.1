@@ -165,6 +165,7 @@ class AppScreenshotView(APIView):
         return Response(
             {
                 'data': serializer.data,
+                'total':all_data.count(),
                 'average_rating': average_rating['ratings__avg'],
                 'message': "Data fetch"
             },
